@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
 
         'checkall'  =>  \App\Http\Middleware\CheckAllMiddleware::class,
         'checkajax' =>  \App\Http\Middleware\CheckAjaxMiddleware::class,
+
     ];
 }

@@ -17,3 +17,4 @@ Route::group( ['middleware' => 'checkall'],function()
 {
     Route::get('course','Home\CourseController@index');
 });
+
