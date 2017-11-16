@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware'  =>  'checkajax'],function()
 {
-    Route::get('/testapi','Api\IndexController@index');
+    Route::post('/testapi','Api\IndexController@index');
     Route::get('/testapi2','Api\IndexController@index');
 });
 

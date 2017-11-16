@@ -18,10 +18,12 @@ class CheckAjaxMiddleware
         /**
          *     是否是ajax提交
          */
-        if( ! $request->ajax() )
+        if( $request->ajax() )
         {
-            return response()->json(['status'=>false]);
+            // 防盗链操作
+//            dd(server(['HTTP_REFERER','REMOTE_ADDR']));
+            return $next($request);
         }
-        return $next($request);
+        return response()->json([ 'status'=>false, 'remark'=>'仅限ajax访问' ]);
     }
 }

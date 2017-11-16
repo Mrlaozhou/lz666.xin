@@ -12,17 +12,18 @@ class CourseController extends Controller
     //
     public function index( Request $request )
     {
-        if( $request->ajax() )
+        if( !$request->ajax() )
         {
             $model = new Course;
-            $data = $model::all(['id','title']);
+            $data = $model::find(1);
 //            dd($data->toArray());
-            return response()->json($data->toArray());
+            return response()->json($data);
         }
         else
         {
-            var_dump(app('Response'));
+//            var_dump(app('Response'));
             throw new RuntimeException('Bad request.');
+//            return response()->make('Not Found', 404);
         }
 
     }

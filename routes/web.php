@@ -12,9 +12,10 @@
 */
 
 Route::get('/', 'Home\IndexController@index');
+Route::get('test', 'TestController@index');
 
 Route::group( ['middleware' => 'checkall'],function()
 {
-    Route::get('course','Home\CourseController@index');
+    Route::get('course','Home\CourseController@index')->name('test');
 });
 
