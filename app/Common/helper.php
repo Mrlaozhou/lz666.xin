@@ -8,26 +8,22 @@ if( !function_exists('haha') )
     }
 }
 
-/**
- *  获取$_SERVER参数
- */
 if( !function_exists('server') )
 {
+    /**
+     * @获取 $_SERVER 参数
+     * @param null $param
+     * @return array
+     */
     function server( $param = null )
     {
         // 返回全部
-        if( $param === null )
+        if( is_null($param) )
             return app('request')->server->all();
-        // 返回一个值
-        if( !is_array($param) && $param != '' )
-            return app('request')->server->get($param);
         // 返回多值
-        return array_map(
-                function($v)
-                {
-                    return app('request')->server->get($v);
-                },
-                $param
-        );
+        if( is_array($param) )
+            return array_map(function($v){ return app('request')->server->get($v); }, $param);
+        // 返回一个值
+        return app('request')->server->get($param);
     }
 }
