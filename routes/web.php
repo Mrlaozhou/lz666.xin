@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'Home\IndexController@index');
+Route::get('/', function(){
+	return view('welcome');
+});
 Route::get('test', 'TestController@index');
 
 Route::group( ['middleware' => 'checkall'],function()
@@ -19,3 +21,7 @@ Route::group( ['middleware' => 'checkall'],function()
     Route::get('course','Home\CourseController@index')->name('test');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
